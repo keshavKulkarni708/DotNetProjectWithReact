@@ -1,0 +1,35 @@
+Day 1 - 23-01-2023
+
+Asp dot net project with react
+
+Setting up the development environment for that need to install some softwares
+1) dot net 7 from dotnet.microsoft.com
+2) Postman for testing API's 
+3) Node 
+4) VS code
+
+Install some extensions in VS code 
+1) C#
+2) C# Extensions by JosKreativ
+3) Material icon theme
+4) NuGet Galley
+5) SQLite
+
+WALKING SKELETON PART1 - API
+
+WALKING SKELETON - "A Walking skeleteon is a tiny implementation of the system that performs a small end-to-end 
+function. It need not use the final architecture , but it should link together the main architectural components.
+The architecture and functionality can then evolve in parallel."
+
+Application Architecture: 
+
+		Domain => Application => Api 
+	
+	Api depends on application and application depend on domain 
+	and persistance is also depend on domain and application is depend on persistance.
+	
+Application projects: 
+	Api - receives the HTTP Requests and responds to theme.
+	Application - process business logic.
+	Domain - contain the business entity . and it is the centre of everything.
+	Persistance - Provide the connection to the database and translates the code into SQL queries.
