@@ -1,0 +1,77 @@
+Day 2 
+
+Open a powershell and run the script from studentAsset zip in powershell 
+from that we are getting one solution and four folders.
+
+After running the script we are getting four folders names as
+Api, Application,Domain, Persistance and Reactivities.sln
+
+From that API is our startup project 
+open terminal and cd API and inside that run command dotnet run
+
+the application is running on random port. so we do not want random port but defined port.
+so to chnage that and some more settings go to the api under that go to the launchsettings.json
+and their in profiles change launcherbrowser to false because we dont want to run our api's in browser for that we are 
+using different tool , postman.
+change the port number to 5000.
+and remove all unnecessary things.
+
+Program.cs is the entry point for any dotet applcation.
+
+Configrations file -> appsettings.json , appsettings.development.json 
+
+In appsettings.json change the warning to Information . beacuse of that we will get the information about sql
+queries when we run that.
+
+we start creating our project from domain. by creating domain entities
+This application is kind of a social networking type of application and it revolves around user and activity.
+
+Create one class activity in domain and add some properties in it 
+like , Guid Id, string Title, Datetime date, string Description, string category, string City, string Venue.
+
+Thats how we have created one domain entity(Activity).
+
+Note: Now we created one entity (activity), some people called it mode also and this entity class stored it as table 
+in database and all the properties/fields are stored it as columns of that table.
+
+Here we are using ORM(Object Relational mappers). so previousely we are writing queries but with the help of
+orm we do not have to write queries.
+
+Open a Nuget gallery and search microsoft.entityframeworkcore and select ./sqlite.
+Install that .
+whatever version of .net you are using that version only needs to install of sqlite.
+Install it in persistance project.
+
+In persistance project create one class DataContext
+
+//Extending that class to the DbContext and added using Microsoft.EntityFrameworkCore; in top 
+ public class DataContext : DbContext
+    {
+		//Added Constructor using quick fix
+        public DataContext(DbContextOptions options) : base(options)
+        {
+        }
+		
+		//Added property Dbset with Activity class names as Activities.
+        public DbSet<Activity> Activities { get; set; }
+    }
+	
+After that go to the program.cs and add this code
+builder.Services.AddDbContext<DataContext>(opt =>
+{
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+}
+);
+
+it will not get added because adddbcontext is in persistance folder and program.cs is in api folder
+so got to the terminal and to the solution path and run the command donet restore.
+
+after that go to the appsettings.development.json file and add 
+
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=reactivities.db"
+  }
+
+
+
+
