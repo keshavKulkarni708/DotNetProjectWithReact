@@ -1,0 +1,41 @@
+Seeding data into database
+
+create a new class in persistance project names as seed.
+seeding data is one of the tds jods you will ever get so 
+In student asset folder that we have downloaded select seeddata.txt in that it has seed class 
+copy paste that class in our class.
+thats how we are adding data in our database.
+
+After that in our program.cs we have to call that seeddata method with the help of seed class.
+
+ await context.Database.MigrateAsync();
+    await Seed.SeedData(context);
+	
+because that seeddata method is async we have to call it as await and in above line also.
+
+insted of dotnet watch command use dotnet watch --no-hot-reload in API project.
+
+***async and await in .net
+
+async and await are also available in .NET and C#. They are used to write asynchronous code in a similar way to JavaScript.
+
+async is used to declare a method that can be executed asynchronously.
+
+await is used within an async method to wait for an asynchronous operation to complete before continuing execution of the method. It allows you to write asynchronous code that looks and behaves like synchronous code.
+
+Example:
+
+csharp
+Copy code
+public async Task<string> GetDataFromAPI()
+{
+    using (HttpClient client = new HttpClient())
+    {
+        HttpResponseMessage response = await client.GetAsync("https://api.example.com/data");
+        return await response.Content.ReadAsStringAsync();
+    }
+}
+In the above example, GetDataFromAPI is an asynchronous method that fetches data from an API using HttpClient and returns the string content. The method uses await to wait for the GetAsync and ReadAsStringAsync operations to complete before returning the data.
+
+
+

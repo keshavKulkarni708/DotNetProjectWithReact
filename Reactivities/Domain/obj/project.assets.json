@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\DotnetWithReactProject\\DotNetProjectWithReact\\Reactivities\\Domain\\Domain.csproj",
+      "projectUniqueName": "g:\\DotnetWithReactProject\\DotNetProjectWithReact\\Reactivities\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "G:\\DotnetWithReactProject\\DotNetProjectWithReact\\Reactivities\\Domain\\Domain.csproj",
+      "projectPath": "g:\\DotnetWithReactProject\\DotNetProjectWithReact\\Reactivities\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "G:\\DotnetWithReactProject\\DotNetProjectWithReact\\Reactivities\\Domain\\obj\\",
+      "outputPath": "g:\\DotnetWithReactProject\\DotNetProjectWithReact\\Reactivities\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"

@@ -1,0 +1,48 @@
+Creating Entity framework code first migration 
+
+here we write code first means created class first and then migrate to the entity.
+
+for that run one command at terminal dotnet tool install --global dotnet-ef --version 7.0.2.
+
+.NET Entity Framework (EF) is an object-relational mapper (ORM) that enables .NET developers to work with relational data using domain-specific objects. It eliminates the need for most of the data-access code that developers usually need to write. EF can be used with the .NET Framework or .NET Core. It allows developers to create a conceptual model of their data using classes, and then it can automatically handle the creation and modification of the database schema based on that model. EF also provides a way to perform CRUD (create, read, update, and delete) operations on data in a database using LINQ (Language Integrated Query) or directly using the API.
+
+To start migration from code to entity 
+write one command
+dotnet ef migrations add InitialCreate -s API (Mention your startup project) -p Persistence (The project where is your data context is present).{Aware of typoes}.
+
+After that we are getting error that it need Microsoft.EntityFrameworkCore.Design this.
+
+so go to the nuget gallery and install Microsoft.EntityFrameworkCore.Design under API folder.
+
+After installing run again this command , dotnet ef migrations add InitialCreate -s API (Mention your startup project) -p Persistance (The project where is your data context is present).
+
+it got succeed and it will create one folder Migrations under persistance project which has 3 files and mainly we are focusing on only one file.
+
+creating the database
+for that in program.cs write this code
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+try
+{
+    var context = services.GetRequiredService<DataContext>();
+    context.Database.Migrate();
+}
+catch (Exception ex)
+{
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex,"An error occured during migration");
+    
+}
+
+This code creates a scope using the CreateScope method from the app.Services object. Within this scope, it retrieves the DataContext service and calls the Migrate method on its Database property. If an exception is thrown during the migration process, it is caught and logged using the ILogger<Program> service, along with the message "An error occured during migration". This is likely part of an ASP.NET Core application, which uses dependency injection to manage services and their lifetimes.
+
+after that run commnad dotnet watch under api project.
+
+dotnet watch is a command line tool that can be used to automatically build and restart a .NET Core application when changes are made to the source code. It works by running a file system watcher to monitor for changes, and then running the appropriate dotnet command (such as dotnet build or dotnet run) when changes are detected. This can be useful for development, allowing developers to see the effects of their changes without manually building and restarting the application each time. This command is available in .NET Core 3.0 or later
+
+
+
+
+

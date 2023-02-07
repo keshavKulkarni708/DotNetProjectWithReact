@@ -10,7 +10,7 @@ From that API is our startup project
 open terminal and cd API and inside that run command dotnet run
 
 the application is running on random port. so we do not want random port but defined port.
-so to chnage that and some more settings go to the api under that go to the launchsettings.json
+so to change that and some more settings go to the api under that go to the launchsettings.json
 and their in profiles change launcherbrowser to false because we dont want to run our api's in browser for that we are 
 using different tool , postman.
 change the port number to 5000.
@@ -31,15 +31,15 @@ like , Guid Id, string Title, Datetime date, string Description, string category
 
 Thats how we have created one domain entity(Activity).
 
-Note: Now we created one entity (activity), some people called it mode also and this entity class stored it as table 
-in database and all the properties/fields are stored it as columns of that table.
+Note: Now we created one entity (activity), some people called it model also and this entity class is stored it as 
+table in database and all the properties/fields are stored it as columns of that table.
 
 Here we are using ORM(Object Relational mappers). so previousely we are writing queries but with the help of
 orm we do not have to write queries.
 
 Open a Nuget gallery and search microsoft.entityframeworkcore and select ./sqlite.
 Install that .
-whatever version of .net you are using that version only needs to install of sqlite.
+whatever version of .net you are using same version only needs to install of sqlite.
 Install it in persistance project.
 
 In persistance project create one class DataContext
@@ -64,7 +64,7 @@ builder.Services.AddDbContext<DataContext>(opt =>
 );
 
 it will not get added because adddbcontext is in persistance folder and program.cs is in api folder
-so got to the terminal and to the solution path and run the command donet restore.
+so go to the terminal and to the solution path and run the command donet restore.
 
 after that go to the appsettings.development.json file and add 
 
