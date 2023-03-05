@@ -1,0 +1,61 @@
+Day 5
+
+Adding Api controller
+
+In Api/Controller folder we have added a class named as BaseAPiController and that has a annotation as a
+ApiController and route controller. which extends controller base.
+
+namespace API.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")] 
+    public class BaseApiController : ControllerBase
+    {
+        
+    }
+}
+
+This code defines a class named "BaseApiController" in the "API.Controllers" namespace. The class inherits from "ControllerBase" and is decorated with the attributes "ApiController" and "Route". The "ApiController" attribute indicates that this class is an API controller in ASP.NET Core. The "Route" attribute specifies the base route for this controller, which is "api/[controller]". This means that the endpoint URLs for actions in this controller will start with "api/BaseApiController".
+
+After that created a new class in a controller folder Activities controller which extends by BaseApi controller.
+
+using Domain;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Persistence;
+
+namespace API.Controllers
+{
+    public class ActivitiesController : BaseApiController
+    {
+        //Want to query our database
+        private readonly DataContext _context;
+ 
+        public ActivitiesController(DataContext context)
+        {
+            _context = context;
+            
+        }
+
+        [HttpGet] //api/activities
+        public async Task<ActionResult<List<Activity>>> GetActivity()
+        {
+            return await _context.Activities.ToListAsync();
+        }
+
+        [HttpGet("{id}")] //api/activities/fdfdfdd
+        public async Task<ActionResult<Activity>> GetActivity(Guid id)
+        {
+            return await _context.Activities.FindAsync(id);
+        }
+
+        
+    }
+}
+
+This code defines a class named "ActivitiesController" that inherits from the "BaseApiController" class. The class has a constructor that takes a "DataContext" object as an argument, which is stored as a private read-only field. The "DataContext" object is used to interact with a database.
+
+There are two actions defined in this controller. The first action, "GetActivity", returns a list of "Activity" objects from the database as a result of an HTTP GET request to the URL "api/activities". The second action, "GetActivity", returns a single "Activity" object from the database based on its "id" as a result of an HTTP GET request to the URL "api/activities/{id}".
+
+Both actions are decorated with the "HttpGet" attribute and use the asynchronous method "ToListAsync()" or "FindAsync()" to query the database and return the result.
+

@@ -1,0 +1,40 @@
+Day 6
+
+Creating the React project
+NOTE:
+(To conclude, JSX = JS, typescript is a superset of Javascript, and there is no comparison between JSX and TypeScript.)
+
+We want to create new project of React in which We are using TypeScript.
+For that type this command on terminal in Reactivities Folder
+npx create-react-app client-app --use-npm --template typescript
+
+After running this command it will create a client-app(React) folder with typescript in it.
+
+React Components:
+
+React do not work on traditional code base like in traditional we write one html file one css file and one JS file,
+but in react we create components and each component have these all 3 html,css,Js. and we can reuse these components in various places as we need.
+
+React has virtual dom, so as we change something in code it will render and reflect it in website immediately.
+
+React has one way binding.
+
+Q.Why to use TypeScript?
+**TypeScript Rocks!**
+- Strong typing
+- Object Oriented
+- Better intellisense
+- Access modifiers
+- Future JS support
+- Catches silly mistakes in dev
+- 3rd party libraries
+- Easy to learn if you know JS
+- Much important in React
+
+**typescript is annoying!**
+-More upfront code
+-3rd party library
+-Strict mode is ...strict!
+
+
+ 
